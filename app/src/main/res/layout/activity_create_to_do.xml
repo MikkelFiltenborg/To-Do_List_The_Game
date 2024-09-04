@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CreateToDoActivity">
+
+    <!--    "View" Headline-->
+    <TextView
+        android:id="@+id/text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center_horizontal"
+        android:text="New Task To Do"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <!--    Name For To Do Item-->
+    <EditText
+        android:id="@+id/edit_text_todo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:ems="10"
+        android:hint="To-Do"
+        android:inputType="text"
+        android:text=""
+        app:layout_constraintStart_toStartOf="@+id/text_view"
+        app:layout_constraintTop_toBottomOf="@+id/text_view"
+        />
+
+    <!--    Description For To Do Item-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintStart_toStartOf="@+id/edit_text_todo"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_todo">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Description"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--    Priority Buttons-->
+    <RadioGroup
+        android:id="@+id/radio_group_priority"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@+id/edit_text_todo"
+        app:layout_constraintTop_toBottomOf="@+id/text_input_layout">
+
+<!--        Priority text-->
+        <TextView
+            android:id="@+id/priority_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="10dp"
+            android:text="Priority"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/edit_text_todo"
+            app:layout_constraintTop_toBottomOf="@+id/text_input_layout"
+            />
+
+        <!--        High Priority-->
+        <RadioButton
+            android:id="@+id/radio_button_priority_high"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="High"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/priority_txt"
+            app:layout_constraintTop_toBottomOf="@+id/priority_txt"
+            />
+
+        <!--        Medium Priority-->
+        <RadioButton
+            android:id="@+id/radio_button_priority_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="Normal"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/radio_button_priority_high"
+            app:layout_constraintTop_toBottomOf="@+id/radio_button_priority_high"
+            />
+
+        <!--        Low Priority-->
+        <RadioButton
+            android:id="@+id/radio_button_priority_low"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="Low"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/radio_button_priority_normal"
+            app:layout_constraintTop_toBottomOf="@+id/radio_button_priority_normal"
+            />
+    </RadioGroup>
+
+    <!--    Spinner(DropDown) For Type Of Task-->
+    <Spinner
+        android:id="@+id/task_type_sp"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintStart_toStartOf="@+id/radio_group_priority"
+        app:layout_constraintTop_toBottomOf="@+id/radio_group_priority"
+        />
+
+<!--    Start Time Txt-->
+    <TextView
+        android:id="@+id/start_time_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Planned Start Time"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/start_time_picker"
+        app:layout_constraintStart_toStartOf="@+id/start_time_picker"
+        app:layout_constraintTop_toBottomOf="@+id/task_type_sp"
+        />
+
+    <!--    Timepicker for planned start time-->
+    <TimePicker
+        android:id="@+id/start_time_picker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:timePickerMode="spinner"
+        app:layout_constraintStart_toStartOf="@+id/radio_group_priority"
+        app:layout_constraintTop_toBottomOf="@+id/start_time_text"
+        />
+
+    <!--    `End Time Txt-->
+    <TextView
+        android:id="@+id/end_time_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Planned End Time"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/end_time_picker"
+        app:layout_constraintEnd_toEndOf="@+id/end_time_picker"
+        app:layout_constraintStart_toStartOf="@+id/end_time_picker"
+        app:layout_constraintTop_toBottomOf="@+id/task_type_sp" />
+
+    <!--    Timepicker For Planned End Time-->
+    <TimePicker
+        android:id="@+id/end_time_picker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:timePickerMode="spinner"
+        app:layout_constraintStart_toEndOf="@+id/start_time_picker"
+        app:layout_constraintTop_toTopOf="@+id/start_time_picker"
+        />
+
+<!--    Before Picture Text-->
+    <TextView
+        android:id="@+id/pic_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Before Picture"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/radiobutton_repeat"
+        app:layout_constraintStart_toStartOf="@+id/text_view"
+        app:layout_constraintTop_toTopOf="@+id/before_pic_btn"
+        />
+
+<!--    Access camera For Before Task Completion Picture-->
+    <Button
+        android:id="@+id/before_pic_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Take Picture"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/pic_txt"
+        app:layout_constraintTop_toBottomOf="@+id/start_time_picker" />
+
+    <!--    Is Task Repeatable?-->
+    <RadioButton
+        android:id="@+id/radiobutton_repeat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Repeatable Task"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/pic_txt"
+        app:layout_constraintTop_toBottomOf="@+id/before_pic_btn" />
+
+    <!--        Àdd XP-->
+    <EditText
+        android:id="@+id/edit_text_xp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="XP Amount"
+        android:inputType="text"
+        android:text=""
+        app:layout_constraintStart_toStartOf="@+id/radiobutton_repeat"
+        app:layout_constraintTop_toBottomOf="@+id/radiobutton_repeat" />
+
+    <!--    Àdd To Do Item To List Of Items-->
+    <Button
+        android:id="@+id/add_to_list_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add To List"
+        app:layout_constraintEnd_toEndOf="@+id/text_view"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_xp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
